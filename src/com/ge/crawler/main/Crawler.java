@@ -53,7 +53,7 @@ public class Crawler {
 			}
 			
 			System.out.print("Please enter the address from the list :"
-					+ " page-01,\npage-02,\npage-03,\npage-04,\npage-05,\npage-06,\npage-09,\npage-07,\npage-08,\npage-99,\npage-97,\npage-98,\n ");
+					+ " page-01,\npage-02,\npage-03,\npage-04,\npage-05,\npage-06,\npage-09,\npage-07,\npage-08,\npage-99,\npage-97,\npage-98\n ");
 
 			String address = in.nextLine();
 			if (pageLinksmap.containsKey(address)) {
@@ -133,12 +133,10 @@ public class Crawler {
 				List<String> addresses = pageLinksmap.get(pageList.get(i));
 				for (String address : addresses) {
 					if (pageList.contains(address)) {
-						synchronized (PageThread.class) {
 							// add all the duplicate address in pagelist to
 							// skipped list
 							skippedSync.add(address);
-						}
-					} else {
+						} else {
 						if (pageLinksmap.containsKey(address)) {
 							// add all the address that are not present in
 							// pagelist
